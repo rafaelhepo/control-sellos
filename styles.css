@@ -1,0 +1,17 @@
+* {
+    background-color: rgb(172, 172, 233);
+}
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    body {
+        display: block;
+    }
+}
+
+/* Estilos para pantallas más grandes (ocultar todo) */
+@media only screen and (min-width: 769px) {
+    body {
+        display: none;
+    }
+}

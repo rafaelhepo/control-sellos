@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de sellos</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <h1>Control de sellos</h1>
+    <h2>Purificadora La Fuente</h2>
+
+    <form>
+        <fieldset>
+            <legend>Información general</legend>
+            <label for="nombre">Nombre:</label>
+            <input placeholder="Nombre" type="text" id="nombre" name="nombre" required>
+            <br><br>
+            
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Control de cargas</legend>
+
+            <label for="cargas-np300-plata">Total cargas camioneta NP 300 PLATA:</label>
+            <input type="number" id="cargas-np300-plata" name="cargas-np300-plata" min="0">
+            <br><br>
+
+            <label for="ultimos-np300-plata">Últimos que quedaron día anterior (NP 300 PLATA):</label>
+            <input type="number" id="ultimos-np300-plata" name="ultimos-np300-plata" min="0">
+            <br><br>
+
+            <label for="cargas-np300-blanca">Total cargas camioneta NP 300 BLANCA:</label>
+            <input type="number" id="cargas-np300-blanca" name="cargas-np300-blanca" min="0">
+            <br><br>
+
+            <label for="ultimos-np300-blanca">Últimos que quedaron día anterior (NP 300 BLANCA):</label>
+            <br>
+            <input type="number" id="ultimos-np300-blanca" name="ultimos-np300-blanca" min="0">
+            <br><br>
+
+            <label for="cargas-gris">Total cargas camioneta GRIS:</label>
+            <br>
+            <input type="number" id="cargas-gris" name="cargas-gris" min="0">
+            <br><br>
+
+            <label for="ultimos-gris">Últimos que quedaron día anterior (GRIS):</label>
+            <input type="number" id="ultimos-gris" name="ultimos-gris" min="0">
+        </fieldset>
+
+        <fieldset>
+            <legend>Sellos</legend>
+
+            <label for="sellos-roto">Sellos quemados o rotos:</label>
+            <input type="number" id="sellos-roto" name="sellos-roto" min="0">
+            <br><br>
+
+            <label for="saldo-sellos">Saldo sellos:</label>
+            <input type="number" name="saldo-sellos" id="saldo-sellos" min="0">
+        </fieldset>
+
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
