@@ -1,6 +1,45 @@
-* {
-    background-color: rgb(172, 172, 233);
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E3E3E3; /* Gris claro de fondo */
+    color: #003366; /* Azul marino para el texto */
 }
+
+h1, h2 {
+    color: #00AEEF; /* Azul claro para los títulos */
+}
+
+fieldset {
+    border: 2px solid #00AEEF; /* Azul claro para bordes */
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #E3E3E3; /* Blanco para el fondo de los campos */
+}
+
+label {
+    color: #003366; /* Azul marino para las etiquetas */
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #00AEEF; /* Azul claro para bordes de inputs */
+    border-radius: 5px;
+    background-color: #FFFFFF; /* Blanco para el fondo de los inputs */
+}
+
+button {
+    background-color: #00C897; /* Verde suave para el botón */
+    color: #FFFFFF; /* Blanco para el texto del botón */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00AEEF; /* Azul claro al pasar el ratón sobre el botón */
+}
+
 
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 768px) {
