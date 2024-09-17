@@ -14,8 +14,14 @@
         <fieldset>
             <legend>Información general</legend>
             <label for="nombre">Nombre:</label>
-            <input placeholder="Nombre" type="text" id="nombre" name="nombre" required>
-            <br><br>
+<select id="nombre" name="nombre" required>
+    <option value="">Seleccione un nombre</option>
+    <option value="opcion1">Jesús</option>
+    <option value="opcion2">Juan Carlos</option>
+    <option value="opcion3">Roberto</option>
+</select>
+<br><br>
+
             
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
