@@ -7,6 +7,7 @@ body {
 
 h1, h2 {
     color: #00AEEF; /* Azul claro para los títulos */
+    text-align: center;
 }
 
 fieldset {
