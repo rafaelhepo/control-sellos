@@ -54,6 +54,8 @@ function calcular() {
     // Obtener los valores de los campos "Saldo" y "Dotación"
     let saldo = parseFloat(document.getElementById('saldo').value);
     let dotacion = parseFloat(document.getElementById('dotacion').value);
+    console.log('saldo', saldo);
+    console.log('dotacion', dotacion);
 
 
     // Verificar si los valores son válidos
@@ -63,16 +65,23 @@ function calcular() {
     }
     //Este es el total de sellos para empezar el dia
     var totalSellos = saldo + dotacion;
+    console.log('total sellos', totalSellos);
 
 
     let cargasPlata = parseFloat(document.getElementById('cargas-np300-plata').value);
     let quedaronPlata = parseFloat(document.getElementById('ultimos-np300-plata').value);
+    console.log('cargas de la plata', cargasPlata);
+    console.log('quedaron de la plata', quedaronPlata);
 
     let cargasBlanca = parseFloat(document.getElementById('cargas-np300-blanca').value);
     let quedaronBlanca = parseFloat(document.getElementById('ultimos-np300-blanca').value);
+    console.log('cargas de la blanca', cargasBlanca);
+    console.log('quedaron de la blanca', quedaronBlanca);
 
     let cargasGris = parseFloat(document.getElementById('cargas-gris').value);
     let quedaronGris = parseFloat(document.getElementById('ultimos-gris').value);
+    console.log('cargas de la gris', cargasGris);
+    console.log('quedaron de la gris', quedaronGris);
 
     if (isNaN(cargasPlata)) {
         alert('Por favor, ingrese un valor válido para las cargas de la camioneta NP 300 PLATA.');
@@ -100,21 +109,25 @@ function calcular() {
     let sumaGlobalCargas = cargasPlata + cargasBlanca + cargasGris;
     let sumaGlobalQuedaronAnterior = quedaronPlata + quedaronBlanca + quedaronGris;
     let sellosQuemados = parseFloat(document.getElementById('sellos-roto').value);
-    let operacionGlobal = (sumaGlobalCargas - sumaGlobalQuedaronAnterior) - sellosQuemados;
-
-    
+    let operacionGlobal = sumaGlobalCargas - (sumaGlobalQuedaronAnterior - sellosQuemados);
     let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
 
-    const debenHaber = operacionGlobal - saldoSellos;
+    const debenHaber = totalSellos - operacionGlobal;
 
-    alert(`Debes tener ${debenHaber} sellos fisicamente`);
+    console.log('Suma global cargas', sumaGlobalCargas);
+    console.log('suma quedaron anterior', sumaGlobalQuedaronAnterior);
+    console.log('sellos quemados', sellosQuemados);
+    console.log('operacion global', operacionGlobal);
+    console.log('saldo sellos', saldoSellos);
+    console.log('deben haber', debenHaber);
+
+    alert(`Te faltan ${debenHaber} sellos`);
 
 
 
     
     
 };
-
 
 
 
