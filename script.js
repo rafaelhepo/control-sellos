@@ -1,19 +1,53 @@
-// Función para establecer la fecha mínima y máxima en el campo de fecha
-        document.addEventListener("DOMContentLoaded", function() {
-            var fechaInput = document.getElementById("fecha");
+document.addEventListener("DOMContentLoaded", function() {
+    var fechaInput = document.getElementById("fecha");
+    var formulario = document.querySelector("form");
+    var inputs = formulario.querySelectorAll("input, select, button");
 
-            // Obtener la fecha actual en formato YYYY-MM-DD
-            var hoy = new Date();
-            var dia = String(hoy.getDate()).padStart(2, '0');
-            var mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Los meses comienzan desde 0
-            var anio = hoy.getFullYear();
+    // Obtener la fecha actual en formato YYYY-MM-DD
+    var hoy = new Date();
+    var dia = String(hoy.getDate()).padStart(2, '0');
+    var mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Los meses comienzan desde 0
+    var anio = hoy.getFullYear();
 
-            var fechaActual = `${anio}-${mes}-${dia}`;
+    var fechaActual = `${anio}-${mes}-${dia}`;
 
-            // Establecer el valor mínimo y máximo como la fecha actual
-            fechaInput.min = fechaActual;
-            fechaInput.max = fechaActual;
+    // Establecer el valor mínimo y máximo como la fecha actual
+    fechaInput.min = fechaActual;
+    fechaInput.max = fechaActual;
+
+    // Función para verificar si la fecha ingresada es la actual
+    fechaInput.addEventListener('input', function() {
+        if (fechaInput.value !== fechaActual) {
+            // Deshabilitar todos los campos si la fecha no es la actual
+            inputs.forEach(function(input) {
+                if (input !== fechaInput) {
+                    input.disabled = true;
+                }
+            });
+            alert("La fecha ingresada no es la fecha actual. El formulario ha sido deshabilitado.");
+        } else {
+            // Habilitar todos los campos si la fecha es la actual
+            inputs.forEach(function(input) {
+                input.disabled = false;
+            });
+        }
+    });
+
+    // Deshabilitar inicialmente los campos si la fecha no está seleccionada
+    inputs.forEach(function(input) {
+        if (input !== fechaInput) {
+            input.disabled = true;
+        }
+    });
+
+    // Habilitar los campos si la fecha es correcta cuando se carga la página
+    if (fechaInput.value === fechaActual) {
+        inputs.forEach(function(input) {
+            input.disabled = false;
         });
+    }
+});
+
 
 // Función para capturar los valores de Saldo y Dotación y realizar operaciones
 function calcular() {
@@ -27,8 +61,8 @@ function calcular() {
         alert('Por favor, ingrese valores válidos en Saldo y Dotación.');
         return;
     }
-
-    var resultado = saldo + dotacion;
+    //Este es el total de sellos para empezar el dia
+    var totalSellos = saldo + dotacion;
 
 
     let cargasPlata = parseFloat(document.getElementById('cargas-np300-plata').value);
@@ -62,6 +96,21 @@ function calcular() {
 
     
     alert('Todos los valores son válidos. Procediendo con la operación.');
+
+    let sumaGlobalCargas = cargasPlata + cargasBlanca + cargasGris;
+    let sumaGlobalQuedaronAnterior = quedaronPlata + quedaronBlanca + quedaronGris;
+    let sellosQuemados = parseFloat(document.getElementById('sellos-roto').value);
+    let operacionGlobal = (sumaGlobalCargas - sumaGlobalQuedaronAnterior) - sellosQuemados;
+
+    
+    let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
+
+    const debenHaber = operacionGlobal - saldoSellos;
+
+    alert(`Debes tener ${debenHaber} sellos fisicamente`);
+
+
+
     
     
 };

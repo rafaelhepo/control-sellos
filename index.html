@@ -13,18 +13,20 @@
     <form>
         <fieldset>
             <legend>Información general</legend>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <br><br>
             <label for="nombre">Nombre:</label>
             <select id="nombre" name="nombre" required>
                 <option value="">Seleccione un nombre</option>
-                <option value="opcion1">Jesús</option>
-                <option value="opcion2">Juan Carlos</option>
-                <option value="opcion3">Roberto</option>
+                <option value="Jesús">Jesús</option>
+                <option value="Juan Carlos">Juan Carlos</option>
+                <option value="Roberto">Roberto</option>
             </select>
-            <br><br>
+            
 
             
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required>
+            
         </fieldset>
         <fieldset>
             <legend>Dotación y saldo sellos</legend>
@@ -45,6 +47,7 @@
             <br><br>
 
             <label for="ultimos-np300-plata">Últimos que quedaron día anterior (NP 300 PLATA):</label>
+            <br>
             <input type="number" id="ultimos-np300-plata" name="ultimos-np300-plata" min="0">
             <br><br>
 
@@ -79,7 +82,7 @@
         </fieldset>
 
         <br><br>
-        <button type="button" onclick="calcular()">Calcular</button>
+        <button type="button" onclick="calcular()">Enviar</button>
 
     </form>
     <script src="./script.js"></script>
