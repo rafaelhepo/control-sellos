@@ -107,12 +107,12 @@ function calcular() {
     alert('Todos los valores son válidos. Procediendo con la operación.');
 
     let sumaGlobalCargas = cargasPlata + cargasBlanca + cargasGris;
-    let sumaGlobalQuedaronAnterior = quedaronPlata + quedaronBlanca + quedaronGris;
     let sellosQuemados = parseFloat(document.getElementById('sellos-roto').value);
-    let operacionGlobal = sumaGlobalCargas - (sumaGlobalQuedaronAnterior - sellosQuemados);
+    let sumaGlobalQuedaronAnterior = quedaronPlata + quedaronBlanca + quedaronGris + sellosQuemados;
+    let operacionGlobal = sumaGlobalCargas - sumaGlobalQuedaronAnterior;
+    let debenHaber = totalSellos - operacionGlobal;
     let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
 
-    const debenHaber = totalSellos - operacionGlobal;
 
     console.log('Suma global cargas', sumaGlobalCargas);
     console.log('suma quedaron anterior', sumaGlobalQuedaronAnterior);
@@ -121,7 +121,7 @@ function calcular() {
     console.log('saldo sellos', saldoSellos);
     console.log('deben haber', debenHaber);
 
-    alert(`Te faltan ${debenHaber} sellos`);
+    alert(`Te faltan ${debenHaber - saldoSellos} sellos`);
 
 
 
