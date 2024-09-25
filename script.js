@@ -112,16 +112,29 @@ function calcular() {
     let operacionGlobal = sumaGlobalCargas - sumaGlobalQuedaronAnterior;
     let debenHaber = totalSellos - operacionGlobal;
     let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
+    let debenQuedarFinal = debenHaber - saldoSellos;
+
+    if (debenQuedarFinal === 0) {
+        alert('Excelente, no hace falta ningún sello');
+    } else if (debenQuedarFinal === 1) {
+        alert('Te falta 1 sello');
+    } else if (debenQuedarFinal > 1) {
+        alert(`Te faltan ${debenQuedarFinal} sellos`);
+    } else if (debenQuedarFinal < 0) {
+        alert('Excelente, no hace falta ningún sello');
+    }
+    
 
 
+//Pruebas
     console.log('Suma global cargas', sumaGlobalCargas);
     console.log('suma quedaron anterior', sumaGlobalQuedaronAnterior);
     console.log('sellos quemados', sellosQuemados);
     console.log('operacion global', operacionGlobal);
     console.log('saldo sellos', saldoSellos);
     console.log('deben haber', debenHaber);
+    console.log('tienen que quedar fisicamente', debenQuedarFinal);
 
-    alert(`Te faltan ${debenHaber - saldoSellos} sellos`);
 
 
 
