@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
 // Función para capturar los valores de Saldo y Dotación y realizar operaciones
 function calcular() {
     // Obtener los valores de los campos "Saldo" y "Dotación"
@@ -56,7 +55,6 @@ function calcular() {
     let dotacion = parseFloat(document.getElementById('dotacion').value);
     console.log('saldo', saldo);
     console.log('dotacion', dotacion);
-
 
     // Verificar si los valores son válidos
     if (isNaN(saldo) || isNaN(dotacion)) {
@@ -66,7 +64,6 @@ function calcular() {
     //Este es el total de sellos para empezar el dia
     var totalSellos = saldo + dotacion;
     console.log('total sellos', totalSellos);
-
 
     let cargasPlata = parseFloat(document.getElementById('cargas-np300-plata').value);
     let quedaronPlata = parseFloat(document.getElementById('ultimos-np300-plata').value);
@@ -101,9 +98,8 @@ function calcular() {
     } else if (isNaN(quedaronGris)) {
         alert('Por favor, ingrese un valor válido para los últimos que quedaron de la camioneta GRIS.');
         return;
-    };
+    }
 
-    
     alert('Todos los valores son válidos. Procediendo con la operación.');
 
     let sumaGlobalCargas = cargasPlata + cargasBlanca + cargasGris;
@@ -114,6 +110,7 @@ function calcular() {
     let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
     let debenQuedarFinal = debenHaber - saldoSellos;
 
+    // Validación de sellos finales
     if (debenQuedarFinal === 0) {
         alert('Excelente, no hace falta ningún sello');
     } else if (debenQuedarFinal === 1) {
@@ -123,26 +120,33 @@ function calcular() {
     } else if (debenQuedarFinal < 0) {
         alert('Excelente, no hace falta ningún sello');
     }
-    
 
+    // Generar PDF usando jsPDF
+    generarPDF({
+        saldo,
+        dotacion,
+        sumaGlobalCargas,
+        sellosQuemados,
+        debenHaber,
+        saldoSellos,
+        debenQuedarFinal
+    });
+}
 
-//Pruebas
-    console.log('Suma global cargas', sumaGlobalCargas);
-    console.log('suma quedaron anterior', sumaGlobalQuedaronAnterior);
-    console.log('sellos quemados', sellosQuemados);
-    console.log('operacion global', operacionGlobal);
-    console.log('saldo sellos', saldoSellos);
-    console.log('deben haber', debenHaber);
-    console.log('tienen que quedar fisicamente', debenQuedarFinal);
-    console.log('hola estoy proband');
+// Función para generar el PDF
+function generarPDF(data) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
+    doc.text("Reporte de Control de Sellos", 10, 10);
+    doc.text(`Saldo inicial: ${data.saldo}`, 10, 20);
+    doc.text(`Dotación: ${data.dotacion}`, 10, 30);
+    doc.text(`Cargas totales: ${data.sumaGlobalCargas}`, 10, 40);
+    doc.text(`Sellos quemados: ${data.sellosQuemados}`, 10, 50);
+    doc.text(`Deben haber: ${data.debenHaber}`, 10, 60);
+    doc.text(`Saldo sellos: ${data.saldoSellos}`, 10, 70);
+    doc.text(`Deben quedar final: ${data.debenQuedarFinal}`, 10, 80);
 
-
-    
-    
-};
-
-
-
-
-
+    // Descargar el PDF
+    doc.save('control_sellos.pdf');
+}

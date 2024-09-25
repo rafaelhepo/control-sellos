@@ -74,16 +74,21 @@
         </fieldset>
 
         <fieldset>
-            <legend>Sellos</legend>
+            <legend>Saldo final sellos</legend>
 
             <label for="sellos-roto">Sellos quemados, rotos o cambios:</label>
             <br>
             <input type="number" id="sellos-roto" name="sellos-roto" min="0">
             <br><br>
-
+            <label for="cargas-vendidas">Cargas vendidas en base:</label>
+            <br>
+            <input type="number" id="cargas-vendidas" name="cargas-vendidas" min="0">
+            <br><br>
             <label for="saldo-sellos">Saldo sellos:</label>
             <br>
             <input type="number" name="saldo-sellos" id="saldo-sellos" min="0">
+            <br><br>
+            
         </fieldset>
 
         <br><br>
@@ -91,5 +96,6 @@
 
     </form>
     <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
