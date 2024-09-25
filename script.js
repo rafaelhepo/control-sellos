@@ -134,7 +134,7 @@ function calcular() {
     console.log('saldo sellos', saldoSellos);
     console.log('deben haber', debenHaber);
     console.log('tienen que quedar fisicamente', debenQuedarFinal);
-
+    console.log('hola estoy proband');
 
 
 
