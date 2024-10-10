@@ -104,12 +104,12 @@ function calcular() {
 
     let sumaGlobalCargas = cargasPlata + cargasBlanca + cargasGris;
     let sellosQuemados = parseFloat(document.getElementById('sellos-roto').value);
-    let sumaGlobalQuedaronAnterior = quedaronPlata + quedaronBlanca + quedaronGris + sellosQuemados;
+    let sumaGlobalQuedaronAnterior = quedaronPlata + quedaronBlanca + quedaronGris;
     let operacionGlobal = sumaGlobalCargas - sumaGlobalQuedaronAnterior;
     let debenHaber = totalSellos - operacionGlobal;
     let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
     let vendidasBase = parseFloat(document.getElementById('cargas-vendidas').value);
-    let debenQuedarFinal = debenHaber - saldoSellos - vendidasBase;
+    let debenQuedarFinal = debenHaber - saldoSellos - sellosQuemados - vendidasBase;
 
     // Validación de sellos finales
     if (debenQuedarFinal === 0) {
