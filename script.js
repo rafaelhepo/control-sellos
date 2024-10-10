@@ -108,7 +108,8 @@ function calcular() {
     let operacionGlobal = sumaGlobalCargas - sumaGlobalQuedaronAnterior;
     let debenHaber = totalSellos - operacionGlobal;
     let saldoSellos = parseFloat(document.getElementById('saldo-sellos').value);
-    let debenQuedarFinal = debenHaber - saldoSellos;
+    let vendidasBase = parseFloat(document.getElementById('cargas-vendidas').value);
+    let debenQuedarFinal = debenHaber - saldoSellos - vendidasBase;
 
     // Validación de sellos finales
     if (debenQuedarFinal === 0) {
