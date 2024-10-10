@@ -123,7 +123,7 @@ function calcular() {
     }
 
     // Generar PDF usando jsPDF
-    generarPDF({
+    /*generarPDF({
         saldo,
         dotacion,
         sumaGlobalCargas,
@@ -131,11 +131,11 @@ function calcular() {
         debenHaber,
         saldoSellos,
         debenQuedarFinal
-    });
+    });*/
 }
 
 // Función para generar el PDF
-function generarPDF(data) {
+/*function generarPDF(data) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -150,4 +150,4 @@ function generarPDF(data) {
 
     // Descargar el PDF
     doc.save('control_sellos.pdf');
-}
+}*/
